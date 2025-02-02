@@ -31,7 +31,14 @@ function updateCards() {
             let book_card_property = document.createTextNode(myLibrary[i][prop])
             book_card_content.appendChild(book_card_property)
             book_card.appendChild(book_card_content)
-        }   main.appendChild(book_card)               
+            
+        }
+        let delCardBtn = document.createElement("button")
+        let delCardProp = document.createTextNode("Delete");
+        delCardBtn.appendChild(delCardProp);
+        book_card.appendChild(delCardBtn)
+
+        main.appendChild(book_card)               
     }      
 }
 
