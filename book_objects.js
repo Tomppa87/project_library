@@ -3,6 +3,9 @@ let myLibrary = [
     {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:"Not Read", index:2}
 ];
 
+const main = document.getElementById("main")
+const form = document.querySelector("form")
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -30,20 +33,16 @@ function updateCards() {
             book_card_content.classList.add(prop)
             let book_card_property = document.createTextNode(myLibrary[i][prop])
             book_card_content.appendChild(book_card_property)
-            book_card.appendChild(book_card_content)
-            
+            book_card.appendChild(book_card_content)            
         }
         let delCardBtn = document.createElement("button")
+        delCardBtn.classList.add("delCardBtn")
         let delCardProp = document.createTextNode("Delete");
         delCardBtn.appendChild(delCardProp);
-        book_card.appendChild(delCardBtn)
-
+        book_card.appendChild(delCardBtn);
         main.appendChild(book_card)               
     }      
 }
-
-const main = document.getElementById("main")
-const form = document.querySelector("form")
 
 let update = document.getElementById("update_btn");
 update.addEventListener("click", function() {
@@ -74,9 +73,17 @@ newBtn.addEventListener("click", function(event) {
 function clearLibrary() {
     myLibrary = [];    
 }
-const delBtn = document.getElementById("delete_btn");
-delBtn.addEventListener("click", function(){
+// Button to Clear myLibrary array and empty card page
+const clearBtn = document.getElementById("delete_btn");
+clearBtn.addEventListener("click", function(){
     clearLibrary();
     clearCards();
     updateCards();
+})
+
+const delete_btns = document.querySelectorAll(".delCardBtn");
+delete_btns.forEach((button) =>{
+    button.addEventListener("click", () => {
+        console.log("Hello")
+    })
 })
