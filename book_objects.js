@@ -1,6 +1,6 @@
 const myLibrary = [
-    ["The Hobbit","J.R.R. Tolkien", 299, false],
-    ["Winnie the Pooh", "A.A. Milne", 112, true]
+    {title:"The Hobbit",author:"J.R.R. Tolkien", pages:299, read:false},
+    {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:true}
 ];
 
 function Book(title, author, pages, read) {
@@ -22,10 +22,23 @@ function addBooktoLibrary(title, author, pages, read) {
     myLibrary.push(newBook)
 }
 
+const main = document.getElementById("main")
+
 let update = document.getElementById("update_btn");
 update.addEventListener("click", function() {
-    for (books in myLibrary) {
-        console.log(books.key)
+    for (let i in myLibrary) {
+        let book_card = document.createElement("div");
+        let book_card_content = document.createTextNode(Object.values(myLibrary[i]))
+        book_card.appendChild(book_card_content);
+        main.appendChild(book_card)
+        
+        //console.log(Object.values(myLibrary[i]))
+        /*let card;
+        for (let key in myLibrary[i]) {
+            console.log(Object.values(myLibrary[i])) 
+        }
+            */
+        
     }
     
 })
