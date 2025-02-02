@@ -8,14 +8,14 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read_status = read;
-    let output;
-    this.info = function() {
+    //let output;
+    /*this.info = function() {
         let read = this.read_status === true ? "Read" : "Not read yet";        
         output = this.title + " by " + this.author + ", " + this.pages
-        + " pages, " + read;
-    return output;
+        + " pages, " + read;*/
+    //return output;
     }
-}
+
 
 function addBooktoLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read)
@@ -25,12 +25,7 @@ function addBooktoLibrary(title, author, pages, read) {
 function clearCards() {
     document.querySelectorAll(".book_card").forEach(e => e.remove())
 }
-
-const main = document.getElementById("main")
-
-let update = document.getElementById("update_btn");
-update.addEventListener("click", function() {
-    clearCards()
+function updateCards() {
     for (let i in myLibrary) {        
         let book_card = document.createElement("div");
         book_card.classList.add("book_card")
@@ -42,6 +37,29 @@ update.addEventListener("click", function() {
             book_card.appendChild(book_card_content)
         }
         main.appendChild(book_card)               
-    }
-    
+    }      
+}
+
+const main = document.getElementById("main")
+const form = document.querySelector("form")
+
+let update = document.getElementById("update_btn");
+update.addEventListener("click", function() {
+    clearCards()
+    updateCards();
+      
 })
+const newBtn = document.getElementById("submit_btn");
+
+newBtn.addEventListener("click", function(event) {
+    event.preventDefault()
+    const submit_title = document.querySelector(".title_input").value
+    const submit_author = document.querySelector(".author_input").value
+    const submit_pages = document.querySelector(".pages_input").value
+    const submit_read = document.querySelector(".read_input").value
+    
+    addBooktoLibrary(submit_title,submit_author,submit_pages,submit_read);
+    console.log(myLibrary)
+    updateCards();
+    form.reset();
+});
