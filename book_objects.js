@@ -63,3 +63,4 @@ newBtn.addEventListener("click", function(event) {
     updateCards();
     form.reset();
 });
+updateCards();
