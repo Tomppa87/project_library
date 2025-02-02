@@ -1,4 +1,7 @@
-const myLibrary = [];
+const myLibrary = [
+    ["The Hobbit","J.R.R. Tolkien", 299, false],
+    ["Winnie the Pooh", "A.A. Milne", 112, true]
+];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -18,6 +21,14 @@ function addBooktoLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read)
     myLibrary.push(newBook)
 }
+
+let update = document.getElementById("update_btn");
+update.addEventListener("click", function() {
+    for (books in myLibrary) {
+        console.log(books.key)
+    }
+    
+})
 
 //const hobbit = new Book("The Hobbit","J.R.R. Tolkien", 299, false)
 //const pooh = new Book("Winnie the Pooh", "A.A. Milne", 112, true)
