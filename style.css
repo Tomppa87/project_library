@@ -1,0 +1,14 @@
+:root {
+    --background_clr: #e6e0d1;
+}
+
+/*.main {
+    background-color: var(--background_clr);
+}*/
+
+.book_card {
+    background-color: var(--background_clr);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}

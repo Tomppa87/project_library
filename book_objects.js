@@ -28,6 +28,7 @@ let update = document.getElementById("update_btn");
 update.addEventListener("click", function() {
     for (let i in myLibrary) {
         let book_card = document.createElement("div");
+        book_card.classList.add("book_card")
         let book_card_content = document.createTextNode(Object.values(myLibrary[i]))
         book_card.appendChild(book_card_content);
         main.appendChild(book_card)
