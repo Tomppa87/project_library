@@ -26,29 +26,17 @@ const main = document.getElementById("main")
 
 let update = document.getElementById("update_btn");
 update.addEventListener("click", function() {
-    for (let i in myLibrary) {
+    for (let i in myLibrary) {        
         let book_card = document.createElement("div");
         book_card.classList.add("book_card")
-        let book_card_content = document.createTextNode(Object.values(myLibrary[i]))
-        book_card.appendChild(book_card_content);
-        main.appendChild(book_card)
-        
-        //console.log(Object.values(myLibrary[i]))
-        /*let card;
-        for (let key in myLibrary[i]) {
-            console.log(Object.values(myLibrary[i])) 
+        for (let prop in myLibrary[i]) {            
+            let book_card_content = document.createElement("div")
+            book_card_content.classList.add(prop)
+            let book_card_property = document.createTextNode(myLibrary[i][prop])
+            book_card_content.appendChild(book_card_property)
+            book_card.appendChild(book_card_content)
         }
-            */
-        
+        main.appendChild(book_card)               
     }
     
 })
-
-//const hobbit = new Book("The Hobbit","J.R.R. Tolkien", 299, false)
-//const pooh = new Book("Winnie the Pooh", "A.A. Milne", 112, true)
-//console.log(hobbit.info());
-//console.log(pooh.info())
-
-/*Object.getPrototypeOf(hobbit) === Book.prototype;
-Object.getPrototypeOf(pooh) === Book.prototype;
-console.log(Object.getPrototypeOf(hobbit))*/

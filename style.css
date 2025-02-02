@@ -2,13 +2,20 @@
     --background_clr: #e6e0d1;
 }
 
-/*.main {
+.main {
     background-color: var(--background_clr);
-}*/
+    display: flex;
+    gap: 20px;
+    
+}
 
 .book_card {
-    background-color: var(--background_clr);
+    background-color: whitesmoke;
     border: 1px solid black;
+    border-radius: 15px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
+
+    
 }
