@@ -1,6 +1,6 @@
-const myLibrary = [
-    {title:"The Hobbit",author:"J.R.R. Tolkien", pages:299, read:"Read"},
-    {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:"Not Read"}
+let myLibrary = [
+    {title:"The Hobbit",author:"J.R.R. Tolkien", pages:299, read:"Read", index:1},
+    {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:"Not Read", index:2}
 ];
 
 function Book(title, author, pages, read) {
@@ -8,17 +8,13 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read_status = read;
-    //let output;
-    /*this.info = function() {
-        let read = this.read_status === true ? "Read" : "Not read yet";        
-        output = this.title + " by " + this.author + ", " + this.pages
-        + " pages, " + read;*/
-    //return output;
     }
 
 
 function addBooktoLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read)
+    newBook.index = (myLibrary.length+1)
+    console.log(newBook.index)
     myLibrary.push(newBook)
 }
 
@@ -35,8 +31,7 @@ function updateCards() {
             let book_card_property = document.createTextNode(myLibrary[i][prop])
             book_card_content.appendChild(book_card_property)
             book_card.appendChild(book_card_content)
-        }
-        main.appendChild(book_card)               
+        }   main.appendChild(book_card)               
     }      
 }
 
@@ -62,12 +57,19 @@ newBtn.addEventListener("click", function(event) {
     }
     else {
         submit_read = "Not Read"
-    }
-    
-    
+    }    
     addBooktoLibrary(submit_title,submit_author,submit_pages,submit_read);
     console.log(myLibrary)
     clearCards();
     updateCards();
     form.reset();
 });
+function clearLibrary() {
+    myLibrary = [];    
+}
+const delBtn = document.getElementById("delete_btn");
+delBtn.addEventListener("click", function(){
+    clearLibrary();
+    clearCards();
+    updateCards();
+})

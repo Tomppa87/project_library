@@ -55,7 +55,8 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    height:fit-content
-
-    
+    height:fit-content    
+}
+.index {
+    display:none;
 }
