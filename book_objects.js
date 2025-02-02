@@ -22,10 +22,15 @@ function addBooktoLibrary(title, author, pages, read) {
     myLibrary.push(newBook)
 }
 
+function clearCards() {
+    document.querySelectorAll(".book_card").forEach(e => e.remove())
+}
+
 const main = document.getElementById("main")
 
 let update = document.getElementById("update_btn");
 update.addEventListener("click", function() {
+    clearCards()
     for (let i in myLibrary) {        
         let book_card = document.createElement("div");
         book_card.classList.add("book_card")
