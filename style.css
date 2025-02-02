@@ -12,18 +12,28 @@ body {
     grid-column: 1/3;
     background-color: #5C7285;
     color: white;
+    text-align: center;
+    padding: 40px;
+    font-size: large;
+    font-weight: bold;
+    
+    
 }
 
 .sidebar {
     background-color: #818C78;
-
-
+    height: 100vh;
+    padding: 50px;
+}
+.sidebar > * {
+    padding-top: 30px;
 }
 
 .main {
     background-color: var(--background_clr);
     display: flex;
     gap: 20px;
+    padding: 20px;
     
 }
 
@@ -34,6 +44,7 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    height:fit-content
 
     
 }

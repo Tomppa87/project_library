@@ -1,6 +1,6 @@
 const myLibrary = [
-    {title:"The Hobbit",author:"J.R.R. Tolkien", pages:299, read:false},
-    {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:true}
+    {title:"The Hobbit",author:"J.R.R. Tolkien", pages:299, read:"Read"},
+    {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:"Not Read"}
 ];
 
 function Book(title, author, pages, read) {
@@ -56,11 +56,18 @@ newBtn.addEventListener("click", function(event) {
     const submit_title = document.querySelector(".title_input").value
     const submit_author = document.querySelector(".author_input").value
     const submit_pages = document.querySelector(".pages_input").value
-    const submit_read = document.querySelector(".read_input").value
+    let submit_read
+    if (document.getElementById("yes_read").checked) {
+        submit_read = "Read"
+    }
+    else {
+        submit_read = "Not Read"
+    }
+    
     
     addBooktoLibrary(submit_title,submit_author,submit_pages,submit_read);
     console.log(myLibrary)
+    clearCards();
     updateCards();
     form.reset();
 });
-updateCards();
