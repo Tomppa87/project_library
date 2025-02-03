@@ -1,5 +1,8 @@
+@import url(https://fonts.bunny.net/css?family=roboto:400);
+
 :root {
     --background_clr: #A7B49E;
+    font-family: 'Roboto', sans-serif;
 }
 body {
     display: grid;
@@ -13,8 +16,8 @@ body {
     background-color: #5C7285;
     color: white;
     text-align: center;
-    padding: 40px;
-    font-size: large;
+    padding: 30px;
+    font-size:xx-large;
     font-weight: bold;
     
     
@@ -29,12 +32,19 @@ body {
     padding: 50px;
 }
 .sidebar > * {
-    padding-top: 30px;    
+    padding-top: 30px;  
+    width: 300px;  
+}
+
+.sidebar_label {
+    width: 100px;
+    display: block;
 }
 
 .title_input,
 .author_input,
 .pages_input {
+    width: 100%;
     border-radius: 20px;
     padding: 5px;
     padding-left: 15px;
@@ -55,11 +65,10 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
     height:fit-content    
 }
-.index {
-   display:none;
-}
+.index,
 .read {
-    display: none;
+   display:none;
 }
