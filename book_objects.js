@@ -1,7 +1,7 @@
 // placeholder books
 let myLibrary = [
-    {title:"The Hobbit",author:"J.R.R. Tolkien", pages:299, read:"Read"},
-    {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:"Not Read"}
+    {title:"The Hobbit",author:"J.R.R. Tolkien", pages:"299 pages", read:"Read"},
+    {title:"Winnie the Pooh",author: "A.A. Milne", pages:"112 pages", read:"Not Read"}
 ];
 
 const main = document.getElementById("main")
@@ -13,6 +13,9 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     }
+function default_state() {
+    updateCards();    
+}
 
 function addBooktoLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read)
@@ -92,7 +95,7 @@ newBtn.addEventListener("click", function(event) {
     event.preventDefault()
     const submit_title = document.querySelector(".title_input").value
     const submit_author = document.querySelector(".author_input").value
-    const submit_pages = document.querySelector(".pages_input").value
+    const submit_pages = (document.querySelector(".pages_input").value)+" pages"
     let submit_read = ""
     if (document.getElementById("yes_read").checked) {
         submit_read = "Read"        
@@ -117,3 +120,5 @@ clearBtn.addEventListener("click", function(){
     clearCards();
     updateCards();
 })
+
+default_state();
