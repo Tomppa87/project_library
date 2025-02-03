@@ -60,3 +60,6 @@ body {
 .index {
    display:none;
 }
+.read {
+    display: none;
+}

@@ -1,3 +1,4 @@
+// placeholder books
 let myLibrary = [
     {title:"The Hobbit",author:"J.R.R. Tolkien", pages:299, read:"Read"},
     {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:"Not Read"}
@@ -10,14 +11,11 @@ function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read_status = read;
+    this.read = read;
     }
-
 
 function addBooktoLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read)
-    //newBook.index = (myLibrary.length+1)
-    //console.log(newBook.index)
     myLibrary.push(newBook)
 }
 
@@ -39,28 +37,54 @@ function updateCards() {
             book_card_content.appendChild(book_index)
             book_card.appendChild(book_card_content)            
         }
+        // create read or not read button
+        
+        let read_updateBtn = document.createElement("button");
+        read_updateBtn.classList.add("read_updateBtn")
+        read_updateBtn.innerText = myLibrary[i].read
+        if (read_updateBtn.innerText === "Read") {
+            read_updateBtn.style.backgroundColor = "#66FF99"
+        } else {
+            read_updateBtn.style.backgroundColor = "red"
+        }
+        
+        book_card.appendChild(read_updateBtn)
+
+        // create delete book card button 
         let delCardBtn = document.createElement("button")
         delCardBtn.classList.add("delCardBtn")
         delCardBtn.id = i;
         let delCardProp = document.createTextNode("Delete");
         delCardBtn.appendChild(delCardProp);
         book_card.appendChild(delCardBtn);
+        
+        // append buttons
+
         main.appendChild(book_card) 
-        delCardBtn.addEventListener("click",(event) => {
-            console.log((event.target.previousSibling))
+
+        // delete book button functionality
+        delCardBtn.addEventListener("click",() => {            
             myLibrary.splice(i,1)
             clearCards();
             updateCards();
         })
-
+        read_updateBtn.addEventListener("click",() => {            
+            console.log(myLibrary[i].read)
+            if (myLibrary[i].read === "Read") {
+                myLibrary[i].read = "Not Read"
+            } else {
+                myLibrary[i].read = "Read"
+            }
+            clearCards();
+            updateCards();
+        })
     }      
 }
 
 let update = document.getElementById("update_btn");
 update.addEventListener("click", function() {
     clearCards()
-    updateCards();
-      
+    updateCards();      
 })
 const newBtn = document.getElementById("submit_btn");
 
@@ -69,12 +93,13 @@ newBtn.addEventListener("click", function(event) {
     const submit_title = document.querySelector(".title_input").value
     const submit_author = document.querySelector(".author_input").value
     const submit_pages = document.querySelector(".pages_input").value
-    let submit_read
+    let submit_read = ""
     if (document.getElementById("yes_read").checked) {
-        submit_read = "Read"
+        submit_read = "Read"        
     }
     else {
-        submit_read = "Not Read"
+        submit_read = "Not Read";
+        
     }    
     addBooktoLibrary(submit_title,submit_author,submit_pages,submit_read);
     console.log(myLibrary)
@@ -92,11 +117,3 @@ clearBtn.addEventListener("click", function(){
     clearCards();
     updateCards();
 })
-/*
-let delete_btns = document.getElementsByClassName(".delCardBtn");
-for (let i = 0; i < delete_btns.length; i++) {
-    console.log(delete_btns)
-    button.addEventListener("click", () => {
-        console.log("hi")
-    })
-}*/
