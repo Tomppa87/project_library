@@ -32,7 +32,6 @@ function updateCards() {
             let book_card_content = document.createElement("div")
             book_card_content.classList.add(prop)
             let book_card_property = document.createTextNode(myLibrary[i][prop])
-            console.log(i)
             let book_index = document.createElement("span");
             book_index.innerText = i;
             book_index.classList.add("index");
@@ -42,13 +41,14 @@ function updateCards() {
         }
         let delCardBtn = document.createElement("button")
         delCardBtn.classList.add("delCardBtn")
+        delCardBtn.id = i;
         let delCardProp = document.createTextNode("Delete");
         delCardBtn.appendChild(delCardProp);
         book_card.appendChild(delCardBtn);
         main.appendChild(book_card) 
-        delCardBtn.addEventListener("click",() => {
-            console.log((myLibrary[i].index-1))
-            myLibrary.splice((myLibrary[i].index-1),1)
+        delCardBtn.addEventListener("click",(event) => {
+            console.log((event.target.previousSibling))
+            myLibrary.splice(i,1)
             clearCards();
             updateCards();
         })
