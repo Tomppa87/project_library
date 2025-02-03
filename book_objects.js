@@ -1,6 +1,6 @@
 let myLibrary = [
-    {title:"The Hobbit",author:"J.R.R. Tolkien", pages:299, read:"Read", index:1},
-    {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:"Not Read", index:2}
+    {title:"The Hobbit",author:"J.R.R. Tolkien", pages:299, read:"Read"},
+    {title:"Winnie the Pooh",author: "A.A. Milne", pages:112, read:"Not Read"}
 ];
 
 const main = document.getElementById("main")
@@ -16,8 +16,8 @@ function Book(title, author, pages, read) {
 
 function addBooktoLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read)
-    newBook.index = (myLibrary.length+1)
-    console.log(newBook.index)
+    //newBook.index = (myLibrary.length+1)
+    //console.log(newBook.index)
     myLibrary.push(newBook)
 }
 
@@ -32,7 +32,12 @@ function updateCards() {
             let book_card_content = document.createElement("div")
             book_card_content.classList.add(prop)
             let book_card_property = document.createTextNode(myLibrary[i][prop])
+            console.log(i)
+            let book_index = document.createElement("span");
+            book_index.innerText = i;
+            book_index.classList.add("index");
             book_card_content.appendChild(book_card_property)
+            book_card_content.appendChild(book_index)
             book_card.appendChild(book_card_content)            
         }
         let delCardBtn = document.createElement("button")
@@ -40,7 +45,14 @@ function updateCards() {
         let delCardProp = document.createTextNode("Delete");
         delCardBtn.appendChild(delCardProp);
         book_card.appendChild(delCardBtn);
-        main.appendChild(book_card)               
+        main.appendChild(book_card) 
+        delCardBtn.addEventListener("click",() => {
+            console.log((myLibrary[i].index-1))
+            myLibrary.splice((myLibrary[i].index-1),1)
+            clearCards();
+            updateCards();
+        })
+
     }      
 }
 
@@ -80,10 +92,11 @@ clearBtn.addEventListener("click", function(){
     clearCards();
     updateCards();
 })
-
-const delete_btns = document.querySelectorAll(".delCardBtn");
-delete_btns.forEach((button) =>{
+/*
+let delete_btns = document.getElementsByClassName(".delCardBtn");
+for (let i = 0; i < delete_btns.length; i++) {
+    console.log(delete_btns)
     button.addEventListener("click", () => {
-        console.log("Hello")
+        console.log("hi")
     })
-})
+}*/
